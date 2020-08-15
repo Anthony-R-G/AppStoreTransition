@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    //MARK: -- UI Element Initialization
     private lazy var shadowView: ShadowView = {
         let sv = ShadowView()
         sv.backgroundColor = .clear

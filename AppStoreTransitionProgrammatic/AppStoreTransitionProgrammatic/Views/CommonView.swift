@@ -11,6 +11,7 @@ import UIKit
 
 class CommonView: UIView {
     //MARK: -- UI Element Initialization
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
@@ -23,7 +24,6 @@ class CommonView: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)
-        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,13 +45,15 @@ class CommonView: UIView {
         return iv
     }()
     
+    //MARK: -- Properties
+    
     private lazy var topConstraint: NSLayoutConstraint = {
         return subtitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16)
     }()
     
     var topConstraintValue: CGFloat {
-        get { return self.topConstraint.constant }
-        set { self.topConstraint.constant = newValue }
+        get { return topConstraint.constant }
+        set { topConstraint.constant = newValue }
     }
     //MARK: -- Methods
     
@@ -66,7 +68,6 @@ class CommonView: UIView {
         insetsLayoutMarginsFromSafeArea = false
         addSubviews()
         setConstraints()
-        backgroundColor = .purple
         configureView()
     }
     

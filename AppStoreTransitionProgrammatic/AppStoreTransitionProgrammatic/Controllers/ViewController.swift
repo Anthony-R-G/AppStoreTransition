@@ -11,6 +11,7 @@ import UIKit
 let reuseIdentifier = "cellId"
 
 class ViewController: UIViewController {
+    //MARK: -- UI Element Initialization
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 335, height: 410)
@@ -25,15 +26,18 @@ class ViewController: UIViewController {
         return cv
     }()
     
-    fileprivate var selectedCell: UICollectionViewCell?
+    //MARK: -- Properties
+    
+    private var selectedCell: UICollectionViewCell?
     
     
+    //MARK: -- Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = true
         addSubviews()
         setConstraints()
-        navigationController?.navigationBar.isHidden = true
     }
 }
 
