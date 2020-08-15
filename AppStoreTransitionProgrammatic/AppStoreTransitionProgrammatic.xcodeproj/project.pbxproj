@@ -18,9 +18,13 @@
 		976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B724E77E6C00277F79 /* DetailViewController.swift */; };
 		976F68BB24E782A900277F79 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BA24E782A900277F79 /* ShadowView.swift */; };
 		976F68BE24E79DCC00277F79 /* CustomTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BD24E79DCC00277F79 /* CustomTransitionAnimation.swift */; };
+		F312D568EC9FF00B648A6B09 /* Pods_AppStoreTransitionProgrammatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70231AA31729CF7E872F5D72 /* Pods_AppStoreTransitionProgrammatic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C2A3740674C26B8B182E48A /* Pods-AppStoreTransitionProgrammatic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreTransitionProgrammatic.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreTransitionProgrammatic/Pods-AppStoreTransitionProgrammatic.debug.xcconfig"; sourceTree = "<group>"; };
+		4886F6882E91BED9ACF14BA1 /* Pods-AppStoreTransitionProgrammatic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreTransitionProgrammatic.release.xcconfig"; path = "Target Support Files/Pods-AppStoreTransitionProgrammatic/Pods-AppStoreTransitionProgrammatic.release.xcconfig"; sourceTree = "<group>"; };
+		70231AA31729CF7E872F5D72 /* Pods_AppStoreTransitionProgrammatic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreTransitionProgrammatic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		976F689924E77D7D00277F79 /* AppStoreTransitionProgrammatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreTransitionProgrammatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		976F689C24E77D7D00277F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		976F689E24E77D7D00277F79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F312D568EC9FF00B648A6B09 /* Pods_AppStoreTransitionProgrammatic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019216A2D29A2A1E8EEA7F0C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70231AA31729CF7E872F5D72 /* Pods_AppStoreTransitionProgrammatic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		976F689024E77D7D00277F79 = {
 			isa = PBXGroup;
 			children = (
 				976F689B24E77D7D00277F79 /* AppStoreTransitionProgrammatic */,
 				976F689A24E77D7D00277F79 /* Products */,
+				BF9ADEEDC339B58AD9E61540 /* Pods */,
+				019216A2D29A2A1E8EEA7F0C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +121,16 @@
 			path = "Transition Animation";
 			sourceTree = "<group>";
 		};
+		BF9ADEEDC339B58AD9E61540 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C2A3740674C26B8B182E48A /* Pods-AppStoreTransitionProgrammatic.debug.xcconfig */,
+				4886F6882E91BED9ACF14BA1 /* Pods-AppStoreTransitionProgrammatic.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 976F68AD24E77D8100277F79 /* Build configuration list for PBXNativeTarget "AppStoreTransitionProgrammatic" */;
 			buildPhases = (
+				E81B18E511A9D2E270870FB7 /* [CP] Check Pods Manifest.lock */,
 				976F689524E77D7D00277F79 /* Sources */,
 				976F689624E77D7D00277F79 /* Frameworks */,
 				976F689724E77D7D00277F79 /* Resources */,
+				2C1AD4A7170E22A84EA2901C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,6 +197,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C1AD4A7170E22A84EA2901C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppStoreTransitionProgrammatic/Pods-AppStoreTransitionProgrammatic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppStoreTransitionProgrammatic/Pods-AppStoreTransitionProgrammatic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppStoreTransitionProgrammatic/Pods-AppStoreTransitionProgrammatic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E81B18E511A9D2E270870FB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppStoreTransitionProgrammatic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		976F689524E77D7D00277F79 /* Sources */ = {
@@ -318,6 +387,7 @@
 		};
 		976F68AE24E77D8100277F79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2A3740674C26B8B182E48A /* Pods-AppStoreTransitionProgrammatic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -336,6 +406,7 @@
 		};
 		976F68AF24E77D8100277F79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4886F6882E91BED9ACF14BA1 /* Pods-AppStoreTransitionProgrammatic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

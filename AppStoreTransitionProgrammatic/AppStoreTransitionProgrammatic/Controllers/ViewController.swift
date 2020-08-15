@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         cv.dataSource = self
         cv.delegate = self
         cv.register(CardCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
         return cv
     }()
     
@@ -61,12 +60,6 @@ extension ViewController: UICollectionViewDelegate {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-//
-//extension ViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//       return CGSize(width: 335, height: 410)
-//    }
-//}
 
 
 //MARK: -- Add Subviews & Constraints

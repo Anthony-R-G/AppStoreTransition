@@ -9,6 +9,7 @@
 import UIKit
 
 class CardCell: UICollectionViewCell {
+    
     private lazy var shadowView: ShadowView = {
         let sv = ShadowView()
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +27,9 @@ class CardCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         addSubviews()
         setConstraints()
     }
@@ -50,19 +54,19 @@ extension CardCell {
     
     func setShadowViewConstraints() {
         NSLayoutConstraint.activate([
-            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            shadowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            shadowView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            shadowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            shadowView.topAnchor.constraint(equalTo: topAnchor),
+            shadowView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
     func setCommonViewConstraints() {
         NSLayoutConstraint.activate([
-            commonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            commonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            commonView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            commonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            commonView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            commonView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            commonView.topAnchor.constraint(equalTo: topAnchor),
+            commonView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

@@ -57,6 +57,20 @@ class DetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func asCard(_ value: Bool) {
+        if value {
+            // Round the corners
+            self.maskView.layer.cornerRadius = 10
+        } else {
+            // Round the corners
+            self.maskView.layer.cornerRadius = 0
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +136,7 @@ extension DetailViewController {
     func setCommonViewConstraints() {
         NSLayoutConstraint.activate([
             commonView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            commonView.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor),
+            commonView.topAnchor.constraint(equalTo: view.topAnchor),
             commonView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             commonView.heightAnchor.constraint(equalToConstant: 500)
         ])

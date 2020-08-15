@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CommonView: UIView {
     //MARK: -- UI Element Initialization
     private lazy var titleLabel: UILabel = {
@@ -15,7 +16,7 @@ class CommonView: UIView {
         label.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+      
         return label
     }()
     
@@ -24,7 +25,7 @@ class CommonView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -34,7 +35,7 @@ class CommonView: UIView {
         label.textColor = .darkGray
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+       
         return label
     }()
     
@@ -43,7 +44,7 @@ class CommonView: UIView {
         iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
@@ -77,6 +78,7 @@ fileprivate extension CommonView {
     func addSubviews() {
         let UIElements = [backgroundImage, titleLabel, subtitleLabel, blurbLabel]
         UIElements.forEach { addSubview($0) }
+        UIElements.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
        
     }
     
@@ -88,35 +90,28 @@ fileprivate extension CommonView {
     }
     
     func setTitleLabelConstraints() {
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
-        ])
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
     }
     
     func setSubtitleLabelConstraints() {
-        NSLayoutConstraint.activate([
-            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            subtitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16)
-        ])
+        subtitleLabel.snp.makeConstraints { (make) in
+            make.leading.top.equalToSuperview().inset(16)
+        }
     }
     
     func setBlurbLabelConstraints() {
-        NSLayoutConstraint.activate([
-            blurbLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            blurbLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            blurbLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
-        ])
+        blurbLabel.snp.makeConstraints { (make) in
+            make.leading.bottom.trailing.equalToSuperview().inset(16)
+        }
     }
     
     func setBackgroundImageConstraints() {
-        NSLayoutConstraint.activate([
-            backgroundImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            backgroundImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-            backgroundImage.heightAnchor.constraint(equalToConstant: 500),
-            backgroundImage.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
-             backgroundImage.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor)
-        ])
+        backgroundImage.snp.makeConstraints { (make) in
+            make.centerY.centerX.equalToSuperview()
+            make.height.width.equalTo(500)
+        }
     }
 }
