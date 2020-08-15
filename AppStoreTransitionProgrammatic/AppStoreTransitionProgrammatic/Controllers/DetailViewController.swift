@@ -12,13 +12,16 @@ class DetailViewController: UIViewController {
     private lazy var shadowView: ShadowView = {
         let sv = ShadowView()
         sv.backgroundColor = .clear
+        sv.autoresizesSubviews = true
         return sv
     }()
     
     private lazy var maskView: UIView = {
-        let sv = UIView()
-        sv.backgroundColor = .clear
-        return sv
+        let mv = UIView()
+        mv.backgroundColor = .clear
+        mv.contentMode = .scaleToFill
+        mv.autoresizesSubviews = true
+        return mv
     }()
     
     private lazy var scrollView: UIScrollView = {
@@ -70,7 +73,9 @@ I am not to blame for that crown upon your head, Maggie! Giving grape juice to t
     //MARK: -- Properties
     
     private lazy var topConstraint: NSLayoutConstraint = {
-        return commonView.topAnchor.constraint(equalTo: maskView.topAnchor, constant: 0)
+        let constraint = commonView.topAnchor.constraint(equalTo: maskView.topAnchor, constant: 0)
+        constraint.priority = .required
+        return constraint
     }()
     
     private lazy var heightConstraint: NSLayoutConstraint = {
@@ -146,7 +151,7 @@ extension DetailViewController {
     
     func setShadowViewConstraints() {
         shadowView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(view)
         }
     }
     
@@ -163,11 +168,18 @@ extension DetailViewController {
     }
     
     func setCommonViewConstraints() {
-        commonView.snp.makeConstraints { (make) in
-            make.top.equalTo(scrollView)
-            make.left.right.equalTo(maskView)
-            make.height.equalTo(500)
-        }
+        commonView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            commonView.heightAnchor.constraint(equalToConstant: 500),
+            commonView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+        commonView.leadingAnchor.constraint(equalTo: maskView.leadingAnchor),
+        commonView.trailingAnchor.constraint(equalTo: maskView.trailingAnchor)
+        ])
+//        commonView.snp.makeConstraints { (make) in
+//            make.top.equalTo(scrollView)
+//            make.left.right.equalTo(maskView)
+//            make.height.equalTo(500)
+//        }
     }
     
     func setBodyViewConstraints() {
@@ -254,7 +266,6 @@ extension DetailViewController: Animatable {
         // If the top card is completely off screen, we move it to be JUST off screen.
         // This makes for a cleaner looking animation.
         if scrollView.contentOffset.y > commonView.frame.height {
-            print(commonView.frame.height)
             self.topConstraint.constant = -commonView.frame.height
             self.view.layoutIfNeeded()
             

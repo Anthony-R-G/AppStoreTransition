@@ -35,7 +35,6 @@ class CommonView: UIView {
         label.textColor = .darkGray
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
-        
         return label
     }()
     
@@ -44,14 +43,14 @@ class CommonView: UIView {
         iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.clearsContextBeforeDrawing = true
+        iv.autoresizesSubviews = true
         return iv
     }()
     
     lazy var topConstraint: NSLayoutConstraint = {
-        return subtitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0)
+        return subtitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16)
     }()
-    
     
     var topConstraintValue: CGFloat {
         get { return self.topConstraint.constant }
@@ -68,10 +67,10 @@ class CommonView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
-        translatesAutoresizingMaskIntoConstraints = false
-        clipsToBounds = true
         setConstraints()
         backgroundColor = .purple
+        insetsLayoutMarginsFromSafeArea = false
+        
         configureView()
     }
     
@@ -104,10 +103,16 @@ fileprivate extension CommonView {
     }
     
     func setSubtitleLabelConstraints() {
-        subtitleLabel.snp.makeConstraints { [weak self ](make) in
-            guard let self = self else { return }
-            make.leading.top.equalTo(self).inset(16)
-        }
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            topConstraint
+        ])
+//        subtitleLabel.snp.makeConstraints { [weak self ](make) in
+//            guard let self = self else { return }
+//            make.leading.equalTo(self).inset(16)
+//            make.top.equalTo(self.snp.top).inset(16)
+//        }
     }
     
     func setBlurbLabelConstraints() {
