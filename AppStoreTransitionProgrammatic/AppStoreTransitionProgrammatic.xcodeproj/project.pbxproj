@@ -78,8 +78,8 @@
 		976F68B224E77E2700277F79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				976F68B024E77DFA00277F79 /* CommonView.swift */,
 				976F68BA24E782A900277F79 /* ShadowView.swift */,
+				976F68B024E77DFA00277F79 /* CommonView.swift */,
 				976F68B324E77E4200277F79 /* CardCell.swift */,
 			);
 			path = Views;

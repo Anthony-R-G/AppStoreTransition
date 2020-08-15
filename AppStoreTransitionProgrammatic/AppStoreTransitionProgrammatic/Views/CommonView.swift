@@ -14,7 +14,6 @@ class CommonView: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 28)
         label.lineBreakMode = .byTruncatingTail
-        
         label.numberOfLines = 0
         return label
     }()
@@ -39,7 +38,6 @@ class CommonView: UIView {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
-    
         return iv
     }()
     
@@ -78,6 +76,7 @@ fileprivate extension CommonView {
         setTitleLabelConstraints()
         setSubtitleLabelConstraints()
         setBlurbLabelConstraints()
+        setBackgroundImageConstraints()
     }
     
     func setTitleLabelConstraints() {
