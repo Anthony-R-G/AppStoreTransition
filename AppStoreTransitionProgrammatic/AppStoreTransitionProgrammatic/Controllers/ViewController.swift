@@ -9,6 +9,7 @@
 import UIKit
 
 let reuseIdentifier = "cellId"
+
 class ViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
         layout.minimumLineSpacing = 30
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
         cv.dataSource = self
         cv.delegate = self
         cv.register(CardCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -27,7 +29,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
         addSubviews()
         setConstraints()
     }
@@ -58,6 +60,12 @@ extension ViewController: UICollectionViewDelegate {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
+//
+//extension ViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//       return CGSize(width: 335, height: 410)
+//    }
+//}
 
 
 //MARK: -- Add Subviews & Constraints

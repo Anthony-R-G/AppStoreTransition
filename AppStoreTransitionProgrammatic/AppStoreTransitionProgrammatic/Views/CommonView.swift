@@ -12,17 +12,25 @@ class CommonView: UIView {
     //MARK: -- UI Element Initialization
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.lineBreakMode = .byTruncatingTail
+        
         label.numberOfLines = 0
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)
         return label
     }()
     
     private lazy var blurbLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .darkGray
+        label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
         return label
     }()
@@ -31,6 +39,7 @@ class CommonView: UIView {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
+    
         return iv
     }()
     
@@ -38,12 +47,16 @@ class CommonView: UIView {
     
     func configureView() {
         titleLabel.text = "Join the Developers of WWDC"
-        subtitleLabel.text = "Now Trending"
+        subtitleLabel.text = "NOW TRENDING"
         blurbLabel.text = "The event brings together creators and dreamers of all ages"
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubviews()
+        setConstraints()
+        backgroundColor = .purple
+        configureView()
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +71,7 @@ fileprivate extension CommonView {
     func addSubviews() {
         let UIElements = [backgroundImage, titleLabel, subtitleLabel, blurbLabel]
         UIElements.forEach { addSubview($0) }
+        UIElements.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
     func setConstraints() {
@@ -68,8 +82,8 @@ fileprivate extension CommonView {
     
     func setTitleLabelConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
@@ -84,7 +98,7 @@ fileprivate extension CommonView {
     func setBlurbLabelConstraints() {
         NSLayoutConstraint.activate([
             blurbLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            blurbLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 16),
+            blurbLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             blurbLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16)
         ])
     }

@@ -9,13 +9,19 @@
 import UIKit
 
 class CardCell: UICollectionViewCell {
+    private lazy var commonView: CommonView = {
+        let cv = CommonView()
+        cv.layer.cornerRadius = 10
+        cv.layer.masksToBounds = true
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
+    }()
     
-    weak var commonView: CommonView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonView.layer.cornerRadius = 10
-        commonView.layer.masksToBounds = true
+        addSubviews()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -23,4 +29,24 @@ class CardCell: UICollectionViewCell {
     }
 }
 
+
+//MARK: -- Add Subviews & Constraints
+extension CardCell {
+    func addSubviews() {
+        contentView.addSubview(commonView)
+    }
+    
+    func setConstraints() {
+        setCommonViewConstraints()
+    }
+    
+    func setCommonViewConstraints() {
+        NSLayoutConstraint.activate([
+            commonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            commonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            commonView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            commonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+    }
+}
 
