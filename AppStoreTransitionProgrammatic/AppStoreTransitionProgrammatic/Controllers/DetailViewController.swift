@@ -27,9 +27,12 @@ class DetailViewController: UIViewController {
         sv.contentInsetAdjustmentBehavior = .never
         return sv
     }()
-
+    
     private lazy var commonView: CommonView = {
         let cv = CommonView()
+        cv.layer.cornerRadius = 10
+        cv.contentMode = .scaleAspectFit
+        cv.autoresizesSubviews = true
         cv.clipsToBounds = true
         return cv
     }()
@@ -64,6 +67,16 @@ I am not to blame for that crown upon your head, Maggie! Giving grape juice to t
         return btn
     }()
     
+    //MARK: -- Properties
+    
+    private lazy var topConstraint: NSLayoutConstraint = {
+        return commonView.topAnchor.constraint(equalTo: maskView.topAnchor, constant: 0)
+    }()
+    
+    private lazy var heightConstraint: NSLayoutConstraint = {
+        return commonView.heightAnchor.constraint(equalToConstant: 500)
+    }()
+    
     //MARK: -- Methods
     
     @objc private func closeButtonPressed() {
@@ -96,7 +109,7 @@ I am not to blame for that crown upon your head, Maggie! Giving grape juice to t
         navigationController?.navigationBar.isHidden = true
         addSubviews()
         setConstraints()
-
+        
         view.backgroundColor = .white
     }
 }
@@ -106,11 +119,11 @@ I am not to blame for that crown upon your head, Maggie! Giving grape juice to t
 extension DetailViewController {
     func addSubviews() {
         view.addSubview(shadowView)
-        view.addSubview(maskView)
+        shadowView.addSubview(maskView)
         maskView.addSubview(scrollView)
         
-        scrollView.addSubview(commonView)
         scrollView.addSubview(bodyView)
+        scrollView.addSubview(commonView)
         
         view.addSubview(closeButton)
         
@@ -139,7 +152,7 @@ extension DetailViewController {
     
     func setMaskViewConstraints() {
         maskView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.edges.equalTo(shadowView)
         }
     }
     
@@ -149,12 +162,10 @@ extension DetailViewController {
         }
     }
     
- 
-    
     func setCommonViewConstraints() {
         commonView.snp.makeConstraints { (make) in
             make.top.equalTo(scrollView)
-            make.left.right.equalTo(view)
+            make.left.right.equalTo(maskView)
             make.height.equalTo(500)
         }
     }
@@ -170,7 +181,6 @@ extension DetailViewController {
     func setBodyTextConstraints() {
         textLabel.snp.makeConstraints { (make) in
             make.edges.equalTo(bodyView).inset(16)
-            
         }
     }
     
@@ -179,6 +189,93 @@ extension DetailViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             make.trailing.equalToSuperview().inset(16)
             make.height.width.equalTo(44)
+        }
+    }
+}
+
+
+extension DetailViewController: Animatable {
+    var containerView: UIView? {
+        return self.view
+    }
+    
+    var childView: UIView? {
+        return self.commonView
+    }
+    
+    func presentingView(
+        sizeAnimator: UIViewPropertyAnimator,
+        positionAnimator: UIViewPropertyAnimator,
+        fromFrame: CGRect,
+        toFrame: CGRect
+    ) {
+        // Make the common view the same size as the initial frame
+        self.heightConstraint.constant = fromFrame.height
+        
+        // Show the close button
+        self.closeButton.alpha = 1
+        
+        // Make the view look like a card
+        self.asCard(true)
+        
+        // Redraw the view to update the previous changes
+        self.view.layoutIfNeeded()
+        
+        // Push the content of the common view down to stay within the safe area insets
+        let safeAreaTop = UIApplication.shared.connectedScenes
+        .filter({$0.activationState == .foregroundActive})
+        .map({$0 as? UIWindowScene})
+        .compactMap({$0})
+        .first?.windows
+            .filter({$0.isKeyWindow}).first?.safeAreaInsets.top ?? .zero
+        self.commonView.topConstraintValue = safeAreaTop + 16
+        
+        // Animate the common view to a height of 500 points
+        self.heightConstraint.constant = 500
+        sizeAnimator.addAnimations {
+            self.view.layoutIfNeeded()
+        }
+        
+        // Animate the view to not look like a card
+        positionAnimator.addAnimations {
+            self.asCard(false)
+        }
+    }
+    
+    func dismissingView(
+        sizeAnimator: UIViewPropertyAnimator,
+        positionAnimator: UIViewPropertyAnimator,
+        fromFrame: CGRect,
+        toFrame: CGRect
+    ) {
+        // If the user has scrolled down in the content, force the common view to go to the top of the screen.
+        self.topConstraint.isActive = true
+        
+        // If the top card is completely off screen, we move it to be JUST off screen.
+        // This makes for a cleaner looking animation.
+        if scrollView.contentOffset.y > commonView.frame.height {
+            print(commonView.frame.height)
+            self.topConstraint.constant = -commonView.frame.height
+            self.view.layoutIfNeeded()
+            
+            // Still want to animate the common view getting pinned to the top of the view
+            self.topConstraint.constant = 0
+        }
+        
+        // Common view does not need to worry about the safe area anymore. Just restore the original value.
+        self.commonView.topConstraintValue = 16
+        
+        // Animate the height of the common view to be the same size as the TO frame.
+        // Also animate hiding the close button
+        self.heightConstraint.constant = toFrame.height
+        sizeAnimator.addAnimations {
+            self.closeButton.alpha = 0
+            self.view.layoutIfNeeded()
+        }
+        
+        // Animate the view to look like a card
+        positionAnimator.addAnimations {
+            self.asCard(true)
         }
     }
 }

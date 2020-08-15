@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 335, height: 410)
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 30
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -24,6 +24,8 @@ class ViewController: UIViewController {
         cv.register(CardCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         return cv
     }()
+    
+    fileprivate var selectedCell: UICollectionViewCell?
     
     
     override func viewDidLoad() {
@@ -56,6 +58,7 @@ extension ViewController: UICollectionViewDataSource {
 //MARK: -- Collection View Delegate
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedCell = self.collectionView.cellForItem(at: indexPath)
         let detailVC = DetailViewController()
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -77,5 +80,15 @@ extension ViewController {
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension ViewController: Animatable {
+    var containerView: UIView? {
+        return self.collectionView
+    }
+
+    var childView: UIView? {
+        return self.selectedCell
     }
 }

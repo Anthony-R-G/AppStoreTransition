@@ -51,14 +51,13 @@ extension CardCell {
     
     func setShadowViewConstraints() {
         shadowView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(self)
         }
     }
     
     func setCommonViewConstraints() {
-        commonView.snp.makeConstraints {[weak self] (make) in
-            guard let self = self else { return }
-            make.edges.equalTo(self)
+        commonView.snp.makeConstraints {(make) in
+            make.edges.equalTo(shadowView)
         }
     }
 }

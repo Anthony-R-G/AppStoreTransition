@@ -16,7 +16,7 @@ class CommonView: UIView {
         label.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
-      
+        
         return label
     }()
     
@@ -35,7 +35,7 @@ class CommonView: UIView {
         label.textColor = .darkGray
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
-       
+        
         return label
     }()
     
@@ -48,6 +48,15 @@ class CommonView: UIView {
         return iv
     }()
     
+    lazy var topConstraint: NSLayoutConstraint = {
+        return subtitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0)
+    }()
+    
+    
+    var topConstraintValue: CGFloat {
+        get { return self.topConstraint.constant }
+        set { self.topConstraint.constant = newValue }
+    }
     //MARK: -- Methods
     
     func configureView() {
@@ -90,25 +99,26 @@ fileprivate extension CommonView {
     func setTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalTo(self).inset(16)
         }
     }
     
     func setSubtitleLabelConstraints() {
-        subtitleLabel.snp.makeConstraints { (make) in
-            make.leading.top.equalTo(self.safeAreaLayoutGuide).inset(16)
+        subtitleLabel.snp.makeConstraints { [weak self ](make) in
+            guard let self = self else { return }
+            make.leading.top.equalTo(self).inset(16)
         }
     }
     
     func setBlurbLabelConstraints() {
         blurbLabel.snp.makeConstraints { (make) in
-            make.leading.bottom.trailing.equalToSuperview().inset(16)
+            make.leading.bottom.trailing.equalTo(self).inset(16)
         }
     }
     
     func setBackgroundImageConstraints() {
         backgroundImage.snp.makeConstraints { (make) in
-            make.centerY.centerX.equalToSuperview()
+            make.centerY.centerX.equalTo(self)
             make.height.width.equalTo(500)
         }
     }
