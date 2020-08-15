@@ -17,6 +17,7 @@
 		976F68B624E77E5E00277F79 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B524E77E5E00277F79 /* NavigationController.swift */; };
 		976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B724E77E6C00277F79 /* DetailViewController.swift */; };
 		976F68BB24E782A900277F79 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BA24E782A900277F79 /* ShadowView.swift */; };
+		976F68BE24E79DCC00277F79 /* CustomTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BD24E79DCC00277F79 /* CustomTransitionAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		976F68B524E77E5E00277F79 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		976F68B724E77E6C00277F79 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		976F68BA24E782A900277F79 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		976F68BD24E79DCC00277F79 /* CustomTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				976F689E24E77D7D00277F79 /* SceneDelegate.swift */,
 				976F68B224E77E2700277F79 /* Views */,
 				976F68B924E77E7900277F79 /* Controllers */,
+				976F68BC24E79DAD00277F79 /* Transition Animation */,
 				976F68A524E77D8100277F79 /* Assets.xcassets */,
 				976F68A724E77D8100277F79 /* LaunchScreen.storyboard */,
 				976F68AA24E77D8100277F79 /* Info.plist */,
@@ -93,6 +96,14 @@
 				976F68B724E77E6C00277F79 /* DetailViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		976F68BC24E79DAD00277F79 /* Transition Animation */ = {
+			isa = PBXGroup;
+			children = (
+				976F68BD24E79DCC00277F79 /* CustomTransitionAnimation.swift */,
+			);
+			path = "Transition Animation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				976F68B424E77E4200277F79 /* CardCell.swift in Sources */,
 				976F68B624E77E5E00277F79 /* NavigationController.swift in Sources */,
 				976F68A124E77D7E00277F79 /* ViewController.swift in Sources */,
+				976F68BE24E79DCC00277F79 /* CustomTransitionAnimation.swift in Sources */,
 				976F689D24E77D7D00277F79 /* AppDelegate.swift in Sources */,
 				976F68BB24E782A900277F79 /* ShadowView.swift in Sources */,
 				976F689F24E77D7D00277F79 /* SceneDelegate.swift in Sources */,
