@@ -28,14 +28,14 @@ class CustomTransitionAnimation: NSObject {
 
 extension CustomTransitionAnimation: UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return max(self.resizingDuration, self.positioningDuration)
+        return max(resizingDuration, positioningDuration)
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        if self.operationType == .push {
-            self.presentTransition(transitionContext)
-        } else if self.operationType == .pop {
-            self.dismissTransition(transitionContext)
+        if operationType == .push {
+            presentTransition(transitionContext)
+        } else if operationType == .pop {
+            dismissTransition(transitionContext)
         }
     }
 }
@@ -55,17 +55,13 @@ extension CustomTransitionAnimation {
             let fromVC = transitionContext.viewController(forKey: .from) as? Animatable,
             let fromContainer = fromVC.containerView,
             let fromChild = fromVC.childView
-        else {
-            return
-        }
+        else { return }
 
         // Views we are animating TO
         guard
             let toVC = transitionContext.viewController(forKey: .to) as? Animatable,
             let toView = transitionContext.view(forKey: .to)
-        else {
-            return
-        }
+        else { return }
 
         // Preserve the original frame of the toView
         let originalFrame = toView.frame
@@ -101,14 +97,14 @@ extension CustomTransitionAnimation {
         // all of our animations are done.
 
         // Animate the card's vertical position
-        let positionAnimator = UIViewPropertyAnimator(duration: self.positioningDuration, dampingRatio: 0.7)
+        let positionAnimator = UIViewPropertyAnimator(duration: positioningDuration, dampingRatio: 0.7)
         positionAnimator.addAnimations {
             // Move the view in the Y direction
             toView.transform = CGAffineTransform(translationX: 0, y: yDiff)
         }
 
         // Animate the card's size
-        let sizeAnimator = UIViewPropertyAnimator(duration: self.resizingDuration, curve: .easeInOut)
+        let sizeAnimator = UIViewPropertyAnimator(duration: resizingDuration, curve: .easeInOut)
         sizeAnimator.addAnimations {
             // Animate the size of the Card View
             toView.frame.size = destinationFrame.size
@@ -140,7 +136,7 @@ extension CustomTransitionAnimation {
         }
 
         // Put the completion handler on the longest lasting animator
-        if (self.positioningDuration > self.resizingDuration) {
+        if (positioningDuration > resizingDuration) {
             positionAnimator.addCompletion(completionHandler)
         } else {
             sizeAnimator.addCompletion(completionHandler)
@@ -163,9 +159,7 @@ extension CustomTransitionAnimation {
         guard
             let fromVC = transitionContext.viewController(forKey: .from) as? Animatable,
             let fromView = transitionContext.view(forKey: .from)
-        else {
-            return
-        }
+        else { return }
 
         // Views we are animating TO
         guard
@@ -173,9 +167,7 @@ extension CustomTransitionAnimation {
             let toView = transitionContext.view(forKey: .to),
             let toContainer = toVC.containerView,
             let toChild = toVC.childView
-        else {
-            return
-        }
+        else { return }
 
         container.addSubview(toView)
         container.addSubview(fromView)
@@ -203,13 +195,13 @@ extension CustomTransitionAnimation {
         // For the duration of the animation, we are moving the frame. Therefore we have a separate animator
         // to just control the Y positioning of the views. We will also use this animator to determine when
         // all of our animations are done.
-        let positionAnimator = UIViewPropertyAnimator(duration: self.positioningDuration, dampingRatio: 0.7)
+        let positionAnimator = UIViewPropertyAnimator(duration: positioningDuration, dampingRatio: 0.7)
         positionAnimator.addAnimations {
             // Move the view in the Y direction
             fromView.transform = CGAffineTransform(translationX: 0, y: yDiff)
         }
 
-        let sizeAnimator = UIViewPropertyAnimator(duration: self.resizingDuration, curve: .easeInOut)
+        let sizeAnimator = UIViewPropertyAnimator(duration: resizingDuration, curve: .easeInOut)
         sizeAnimator.addAnimations {
             fromView.frame.size = destinationFrame.size
             fromView.layoutIfNeeded()
@@ -236,7 +228,7 @@ extension CustomTransitionAnimation {
         }
 
         // Put the completion handler on the longest lasting animator
-        if (self.positioningDuration > self.resizingDuration) {
+        if (positioningDuration > resizingDuration) {
             positionAnimator.addCompletion(completionHandler)
         } else {
             sizeAnimator.addCompletion(completionHandler)
