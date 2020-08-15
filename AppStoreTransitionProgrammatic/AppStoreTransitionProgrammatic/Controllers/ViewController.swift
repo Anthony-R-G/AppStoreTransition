@@ -85,10 +85,10 @@ extension ViewController {
 
 extension ViewController: Animatable {
     var containerView: UIView? {
-        return self.collectionView
+        return collectionView
     }
 
     var childView: UIView? {
-        return self.selectedCell
+        return selectedCell
     }
 }
