@@ -8,8 +8,6 @@
 
 import UIKit
 
-import UIKit
-
 class CustomTransitionAnimation: NSObject {
     fileprivate let operationType: UINavigationController.Operation
     fileprivate let positioningDuration: TimeInterval
