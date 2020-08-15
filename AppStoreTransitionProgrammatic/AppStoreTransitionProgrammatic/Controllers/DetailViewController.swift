@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     //MARK: -- UI Element Initialization
+    
     private lazy var shadowView: ShadowView = {
         let sv = ShadowView()
         sv.backgroundColor = .clear
@@ -178,6 +179,7 @@ extension DetailViewController {
 }
 
 
+//MARK: -- Animatable Methods
 extension DetailViewController: Animatable {
     var containerView: UIView? {
         return view
