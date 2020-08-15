@@ -27,7 +27,6 @@ class CardCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubviews()
@@ -53,21 +52,16 @@ extension CardCell {
     }
     
     func setShadowViewConstraints() {
-        NSLayoutConstraint.activate([
-            shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            shadowView.topAnchor.constraint(equalTo: topAnchor),
-            shadowView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        shadowView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     func setCommonViewConstraints() {
-        NSLayoutConstraint.activate([
-            commonView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            commonView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            commonView.topAnchor.constraint(equalTo: topAnchor),
-            commonView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        commonView.snp.makeConstraints {[weak self] (make) in
+            guard let self = self else { return }
+            make.edges.equalTo(self)
+        }
     }
 }
 
