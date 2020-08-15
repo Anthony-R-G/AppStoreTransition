@@ -170,7 +170,7 @@ extension DetailViewController {
     func setCommonViewConstraints() {
         commonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            commonView.heightAnchor.constraint(equalToConstant: 500),
+            heightConstraint,
             commonView.topAnchor.constraint(equalTo: scrollView.topAnchor),
         commonView.leadingAnchor.constraint(equalTo: maskView.leadingAnchor),
         commonView.trailingAnchor.constraint(equalTo: maskView.trailingAnchor)

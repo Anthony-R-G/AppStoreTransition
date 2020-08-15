@@ -108,11 +108,6 @@ fileprivate extension CommonView {
             subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             topConstraint
         ])
-//        subtitleLabel.snp.makeConstraints { [weak self ](make) in
-//            guard let self = self else { return }
-//            make.leading.equalTo(self).inset(16)
-//            make.top.equalTo(self.snp.top).inset(16)
-//        }
     }
     
     func setBlurbLabelConstraints() {
