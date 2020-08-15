@@ -9,6 +9,13 @@
 import UIKit
 
 class CardCell: UICollectionViewCell {
+    private lazy var shadowView: ShadowView = {
+        let sv = ShadowView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.backgroundColor = .clear
+        return sv
+    }()
+    
     private lazy var commonView: CommonView = {
         let cv = CommonView()
         cv.layer.cornerRadius = 10
@@ -33,11 +40,22 @@ class CardCell: UICollectionViewCell {
 //MARK: -- Add Subviews & Constraints
 extension CardCell {
     func addSubviews() {
-        contentView.addSubview(commonView)
+        contentView.addSubview(shadowView)
+        shadowView.addSubview(commonView)
     }
     
     func setConstraints() {
+        setShadowViewConstraints()
         setCommonViewConstraints()
+    }
+    
+    func setShadowViewConstraints() {
+        NSLayoutConstraint.activate([
+            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            shadowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            shadowView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            shadowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
     
     func setCommonViewConstraints() {
