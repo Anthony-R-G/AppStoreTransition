@@ -78,8 +78,6 @@ fileprivate extension CommonView {
     func addSubviews() {
         let UIElements = [backgroundImage, titleLabel, subtitleLabel, blurbLabel]
         UIElements.forEach { addSubview($0) }
-        UIElements.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-       
     }
     
     func setConstraints() {

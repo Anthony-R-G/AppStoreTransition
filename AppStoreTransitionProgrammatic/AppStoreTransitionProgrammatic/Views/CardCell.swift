@@ -12,7 +12,6 @@ class CardCell: UICollectionViewCell {
     
     private lazy var shadowView: ShadowView = {
         let sv = ShadowView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
         sv.backgroundColor = .clear
         return sv
     }()
@@ -21,7 +20,6 @@ class CardCell: UICollectionViewCell {
         let cv = CommonView()
         cv.layer.cornerRadius = 10
         cv.layer.masksToBounds = true
-        cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
     
