@@ -58,9 +58,9 @@ extension ViewController: UICollectionViewDataSource {
 //MARK: -- Collection View Delegate
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedCell = self.collectionView.cellForItem(at: indexPath)
+        selectedCell = collectionView.cellForItem(at: indexPath)
         let detailVC = DetailViewController()
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

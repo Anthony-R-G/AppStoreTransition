@@ -16,7 +16,6 @@ class CommonView: UIView {
         label.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
-        
         return label
     }()
     
@@ -25,7 +24,7 @@ class CommonView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)
         label.numberOfLines = 0
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -43,12 +42,10 @@ class CommonView: UIView {
         iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.clearsContextBeforeDrawing = true
-        iv.autoresizesSubviews = true
         return iv
     }()
     
-    lazy var topConstraint: NSLayoutConstraint = {
+    private lazy var topConstraint: NSLayoutConstraint = {
         return subtitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16)
     }()
     
@@ -66,11 +63,10 @@ class CommonView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        insetsLayoutMarginsFromSafeArea = false
         addSubviews()
         setConstraints()
         backgroundColor = .purple
-        insetsLayoutMarginsFromSafeArea = false
-        
         configureView()
     }
     
@@ -84,8 +80,7 @@ class CommonView: UIView {
 
 fileprivate extension CommonView {
     func addSubviews() {
-        let UIElements = [backgroundImage, titleLabel, subtitleLabel, blurbLabel]
-        UIElements.forEach { addSubview($0) }
+        [backgroundImage, titleLabel, subtitleLabel, blurbLabel].forEach { addSubview($0) }
     }
     
     func setConstraints() {
@@ -96,7 +91,8 @@ fileprivate extension CommonView {
     }
     
     func setTitleLabelConstraints() {
-        titleLabel.snp.makeConstraints { (make) in
+        titleLabel.snp.makeConstraints { [weak self] (make) in
+            guard let self = self else { return }
             make.top.equalTo(subtitleLabel.snp.bottom).offset(8)
             make.leading.trailing.equalTo(self).inset(16)
         }
@@ -111,13 +107,15 @@ fileprivate extension CommonView {
     }
     
     func setBlurbLabelConstraints() {
-        blurbLabel.snp.makeConstraints { (make) in
+        blurbLabel.snp.makeConstraints { [weak self] (make) in
+            guard let self = self else { return }
             make.leading.bottom.trailing.equalTo(self).inset(16)
         }
     }
     
     func setBackgroundImageConstraints() {
-        backgroundImage.snp.makeConstraints { (make) in
+        backgroundImage.snp.makeConstraints { [weak self] (make) in
+            guard let self = self else { return }
             make.centerY.centerX.equalTo(self)
             make.height.width.equalTo(500)
         }
