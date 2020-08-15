@@ -12,6 +12,10 @@
 		976F68A124E77D7E00277F79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68A024E77D7E00277F79 /* ViewController.swift */; };
 		976F68A624E77D8100277F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 976F68A524E77D8100277F79 /* Assets.xcassets */; };
 		976F68A924E77D8100277F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 976F68A724E77D8100277F79 /* LaunchScreen.storyboard */; };
+		976F68B124E77DFA00277F79 /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B024E77DFA00277F79 /* CommonView.swift */; };
+		976F68B424E77E4200277F79 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B324E77E4200277F79 /* CardCell.swift */; };
+		976F68B624E77E5E00277F79 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B524E77E5E00277F79 /* NavigationController.swift */; };
+		976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B724E77E6C00277F79 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		976F68A524E77D8100277F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		976F68A824E77D8100277F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		976F68AA24E77D8100277F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		976F68B024E77DFA00277F79 /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
+		976F68B324E77E4200277F79 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		976F68B524E77E5E00277F79 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		976F68B724E77E6C00277F79 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +64,32 @@
 			children = (
 				976F689C24E77D7D00277F79 /* AppDelegate.swift */,
 				976F689E24E77D7D00277F79 /* SceneDelegate.swift */,
-				976F68A024E77D7E00277F79 /* ViewController.swift */,
+				976F68B224E77E2700277F79 /* Views */,
+				976F68B924E77E7900277F79 /* Controllers */,
 				976F68A524E77D8100277F79 /* Assets.xcassets */,
 				976F68A724E77D8100277F79 /* LaunchScreen.storyboard */,
 				976F68AA24E77D8100277F79 /* Info.plist */,
 			);
 			path = AppStoreTransitionProgrammatic;
+			sourceTree = "<group>";
+		};
+		976F68B224E77E2700277F79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				976F68B024E77DFA00277F79 /* CommonView.swift */,
+				976F68B324E77E4200277F79 /* CardCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		976F68B924E77E7900277F79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				976F68A024E77D7E00277F79 /* ViewController.swift */,
+				976F68B524E77E5E00277F79 /* NavigationController.swift */,
+				976F68B724E77E6C00277F79 /* DetailViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				976F68B424E77E4200277F79 /* CardCell.swift in Sources */,
+				976F68B624E77E5E00277F79 /* NavigationController.swift in Sources */,
 				976F68A124E77D7E00277F79 /* ViewController.swift in Sources */,
 				976F689D24E77D7D00277F79 /* AppDelegate.swift in Sources */,
 				976F689F24E77D7D00277F79 /* SceneDelegate.swift in Sources */,
+				976F68B124E77DFA00277F79 /* CommonView.swift in Sources */,
+				976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
