@@ -137,7 +137,7 @@ extension DetailViewController {
     
     func setCloseButtonConstraints() {
         closeButton.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             make.trailing.equalToSuperview().inset(16)
             make.height.width.equalTo(44)
         }
