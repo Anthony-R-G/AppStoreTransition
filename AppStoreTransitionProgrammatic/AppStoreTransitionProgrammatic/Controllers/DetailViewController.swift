@@ -27,11 +27,7 @@ class DetailViewController: UIViewController {
         sv.contentInsetAdjustmentBehavior = .never
         return sv
     }()
-    
-    private lazy var contentView: UIView = {
-        return UIView()
-    }()
-    
+
     private lazy var commonView: CommonView = {
         let cv = CommonView()
         cv.clipsToBounds = true
@@ -90,7 +86,6 @@ I am not to blame for that crown upon your head, Maggie! Giving grape juice to t
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.contentSize.height   = 2000
         scrollView.scrollIndicatorInsets = view.safeAreaInsets
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
     }
@@ -101,6 +96,7 @@ I am not to blame for that crown upon your head, Maggie! Giving grape juice to t
         navigationController?.navigationBar.isHidden = true
         addSubviews()
         setConstraints()
+
         view.backgroundColor = .white
     }
 }
@@ -113,9 +109,9 @@ extension DetailViewController {
         view.addSubview(maskView)
         maskView.addSubview(scrollView)
         
-        scrollView.addSubview(contentView)
-        contentView.addSubview(bodyView)
-        contentView.addSubview(commonView)
+        scrollView.addSubview(commonView)
+        scrollView.addSubview(bodyView)
+        
         view.addSubview(closeButton)
         
         bodyView.addSubview(textLabel)
@@ -126,7 +122,7 @@ extension DetailViewController {
         setMaskViewConstraints()
         
         setScrollViewConstraints()
-        setContentViewConstraints()
+        
         
         setCommonViewConstraints()
         setBodyViewConstraints()
@@ -153,11 +149,7 @@ extension DetailViewController {
         }
     }
     
-    func setContentViewConstraints() {
-        contentView.snp.makeConstraints { (make) in
-            make.edges.equalTo(scrollView)
-        }
-    }
+ 
     
     func setCommonViewConstraints() {
         commonView.snp.makeConstraints { (make) in

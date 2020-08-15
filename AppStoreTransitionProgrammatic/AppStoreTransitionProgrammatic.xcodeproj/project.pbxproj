@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B724E77E6C00277F79 /* DetailViewController.swift */; };
 		976F68BB24E782A900277F79 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BA24E782A900277F79 /* ShadowView.swift */; };
 		976F68BE24E79DCC00277F79 /* CustomTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BD24E79DCC00277F79 /* CustomTransitionAnimation.swift */; };
+		976F68C024E7C37300277F79 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BF24E7C37300277F79 /* Animatable.swift */; };
 		F312D568EC9FF00B648A6B09 /* Pods_AppStoreTransitionProgrammatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70231AA31729CF7E872F5D72 /* Pods_AppStoreTransitionProgrammatic.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		976F68B724E77E6C00277F79 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		976F68BA24E782A900277F79 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		976F68BD24E79DCC00277F79 /* CustomTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionAnimation.swift; sourceTree = "<group>"; };
+		976F68BF24E7C37300277F79 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				976F68BD24E79DCC00277F79 /* CustomTransitionAnimation.swift */,
+				976F68BF24E7C37300277F79 /* Animatable.swift */,
 			);
 			path = "Transition Animation";
 			sourceTree = "<group>";
@@ -127,7 +130,6 @@
 				2C2A3740674C26B8B182E48A /* Pods-AppStoreTransitionProgrammatic.debug.xcconfig */,
 				4886F6882E91BED9ACF14BA1 /* Pods-AppStoreTransitionProgrammatic.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -254,6 +256,7 @@
 				976F689F24E77D7D00277F79 /* SceneDelegate.swift in Sources */,
 				976F68B124E77DFA00277F79 /* CommonView.swift in Sources */,
 				976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */,
+				976F68C024E7C37300277F79 /* Animatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
