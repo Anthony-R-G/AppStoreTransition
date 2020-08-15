@@ -38,6 +38,7 @@ class CommonView: UIView {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -52,6 +53,7 @@ class CommonView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
+        clipsToBounds = true
         setConstraints()
         backgroundColor = .purple
         configureView()

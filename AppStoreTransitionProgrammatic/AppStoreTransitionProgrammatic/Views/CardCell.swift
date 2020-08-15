@@ -24,7 +24,6 @@ class CardCell: UICollectionViewCell {
         return cv
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()

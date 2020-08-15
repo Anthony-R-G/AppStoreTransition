@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         addSubviews()
         setConstraints()
+        navigationController?.navigationBar.isHidden = true
     }
 }
 

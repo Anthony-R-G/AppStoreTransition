@@ -88,8 +88,8 @@
 		976F68B924E77E7900277F79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				976F68A024E77D7E00277F79 /* ViewController.swift */,
 				976F68B524E77E5E00277F79 /* NavigationController.swift */,
+				976F68A024E77D7E00277F79 /* ViewController.swift */,
 				976F68B724E77E6C00277F79 /* DetailViewController.swift */,
 			);
 			path = Controllers;
