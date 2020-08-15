@@ -16,6 +16,7 @@
 		976F68B424E77E4200277F79 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B324E77E4200277F79 /* CardCell.swift */; };
 		976F68B624E77E5E00277F79 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B524E77E5E00277F79 /* NavigationController.swift */; };
 		976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68B724E77E6C00277F79 /* DetailViewController.swift */; };
+		976F68BB24E782A900277F79 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F68BA24E782A900277F79 /* ShadowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		976F68B324E77E4200277F79 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		976F68B524E77E5E00277F79 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		976F68B724E77E6C00277F79 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		976F68BA24E782A900277F79 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				976F68B024E77DFA00277F79 /* CommonView.swift */,
+				976F68BA24E782A900277F79 /* ShadowView.swift */,
 				976F68B324E77E4200277F79 /* CardCell.swift */,
 			);
 			path = Views;
@@ -166,6 +169,7 @@
 				976F68B624E77E5E00277F79 /* NavigationController.swift in Sources */,
 				976F68A124E77D7E00277F79 /* ViewController.swift in Sources */,
 				976F689D24E77D7D00277F79 /* AppDelegate.swift in Sources */,
+				976F68BB24E782A900277F79 /* ShadowView.swift in Sources */,
 				976F689F24E77D7D00277F79 /* SceneDelegate.swift in Sources */,
 				976F68B124E77DFA00277F79 /* CommonView.swift in Sources */,
 				976F68B824E77E6C00277F79 /* DetailViewController.swift in Sources */,

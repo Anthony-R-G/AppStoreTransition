@@ -29,9 +29,18 @@ class CommonView: UIView {
     
     private lazy var backgroundImage: UIImageView = {
         let iv = UIImageView()
+        iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
         return iv
     }()
+    
+    //MARK: -- Methods
+    
+    func configureView() {
+        titleLabel.text = "Join the Developers of WWDC"
+        subtitleLabel.text = "Now Trending"
+        blurbLabel.text = "The event brings together creators and dreamers of all ages"
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,7 +49,6 @@ class CommonView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 
@@ -48,7 +56,7 @@ class CommonView: UIView {
 
 fileprivate extension CommonView {
     func addSubviews() {
-        let UIElements = [titleLabel, subtitleLabel, blurbLabel]
+        let UIElements = [backgroundImage, titleLabel, subtitleLabel, blurbLabel]
         UIElements.forEach { addSubview($0) }
     }
     

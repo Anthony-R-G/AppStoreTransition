@@ -28,10 +28,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
+        addSubviews()
+        setConstraints()
     }
 }
 
 
+//MARK: -- Collection View Data Source
 extension ViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -42,15 +45,39 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CardCell
         return cell
     }
 }
 
 
+//MARK: -- Collection View Delegate
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+
+//MARK: -- Add Subviews & Constraints
+extension ViewController {
+    func addSubviews() {
+        let UIElements = [collectionView]
+        UIElements.forEach { view.addSubview($0) }
+        UIElements.forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+    }
+    
+    func setConstraints() {
+        setCollectionViewConstraints()
+    }
+    
+    func setCollectionViewConstraints() {
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }

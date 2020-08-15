@@ -10,4 +10,17 @@ import UIKit
 
 class CardCell: UICollectionViewCell {
     
+    weak var commonView: CommonView!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonView.layer.cornerRadius = 10
+        commonView.layer.masksToBounds = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
+
+
