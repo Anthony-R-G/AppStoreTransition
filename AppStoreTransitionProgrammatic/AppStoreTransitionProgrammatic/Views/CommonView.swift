@@ -12,9 +12,10 @@ class CommonView: UIView {
     //MARK: -- UI Element Initialization
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -22,6 +23,8 @@ class CommonView: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = #colorLiteral(red: 0.4823529412, green: 0.4823529412, blue: 0.4823529412, alpha: 1)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -31,6 +34,7 @@ class CommonView: UIView {
         label.textColor = .darkGray
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -39,6 +43,7 @@ class CommonView: UIView {
         iv.image = #imageLiteral(resourceName: "wwdc")
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
+        iv.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         return iv
     }()
     
@@ -53,6 +58,7 @@ class CommonView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
+        translatesAutoresizingMaskIntoConstraints = false
         clipsToBounds = true
         setConstraints()
         backgroundColor = .purple
@@ -71,7 +77,7 @@ fileprivate extension CommonView {
     func addSubviews() {
         let UIElements = [backgroundImage, titleLabel, subtitleLabel, blurbLabel]
         UIElements.forEach { addSubview($0) }
-        UIElements.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+       
     }
     
     func setConstraints() {
@@ -83,9 +89,9 @@ fileprivate extension CommonView {
     
     func setTitleLabelConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor)
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
     
@@ -100,7 +106,7 @@ fileprivate extension CommonView {
         NSLayoutConstraint.activate([
             blurbLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             blurbLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            blurbLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16)
+            blurbLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
     
@@ -109,8 +115,8 @@ fileprivate extension CommonView {
             backgroundImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             backgroundImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             backgroundImage.heightAnchor.constraint(equalToConstant: 500),
-            backgroundImage.widthAnchor.constraint(equalToConstant: 500)
-        
+            backgroundImage.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
+             backgroundImage.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor)
         ])
     }
 }

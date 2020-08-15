@@ -46,9 +46,16 @@ class DetailViewController: UIViewController {
     private lazy var closeButton: UIButton = {
         let btn = UIButton()
         btn.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+        btn.addTarget(self, action: #selector(closeButtonPressed), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
+    
+    //MARK: -- Methods
+    
+    @objc private func closeButtonPressed() {
+        navigationController?.popViewController(animated: true)
+    }
     
     
     override func viewDidLoad() {
@@ -65,14 +72,13 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     func addSubviews() {
         view.addSubview(shadowView)
-        view.addSubview(closeButton)
+        
         shadowView.addSubview(maskView)
         maskView.addSubview(scrollView)
         
         scrollView.addSubview(bodyView)
         scrollView.addSubview(commonView)
-        
-        
+        view.addSubview(closeButton)
     }
     
     func setConstraints() {
@@ -133,8 +139,10 @@ extension DetailViewController {
     
     func setCloseButtonConstraints() {
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: maskView.topAnchor, constant: 16),
-            closeButton.trailingAnchor.constraint(equalTo: maskView.trailingAnchor, constant: -16)
+            closeButton.topAnchor.constraint(equalTo: maskView.safeAreaLayoutGuide.topAnchor, constant: 16),
+            closeButton.trailingAnchor.constraint(equalTo: maskView.trailingAnchor, constant: -16),
+            closeButton.heightAnchor.constraint(equalToConstant: 44),
+            closeButton.widthAnchor.constraint(equalToConstant: 44)
         ])
     }
 }
